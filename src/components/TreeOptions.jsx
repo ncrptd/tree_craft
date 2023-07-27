@@ -1,6 +1,6 @@
 function TreeOptions() {
     return (
-        <div className="flex justify-between p-2 ">
+        <div className="flex justify-between m-2">
             <span className="uppercase text-sm text-slate-500">dfin</span>
             <ul className="flex gap-4">
                 <li className="flex justify-center items-center cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 text-red-500">
