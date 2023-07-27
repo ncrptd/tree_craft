@@ -1,4 +1,8 @@
+import { useDispatch } from 'react-redux'
+import { toggleNewContainer } from '../store/slices/TreeSlice'
 function TreeNodeOptions() {
+    const dispatch = useDispatch();
+
     return (
         <ul className="flex gap-4 cursor-pointer ">
             <li className="flex justify-center items-center group relative">
@@ -10,7 +14,7 @@ function TreeNodeOptions() {
                     <path fillRule="evenodd" d="M12 5.25a.75.75 0 01.75.75v5.25H18a.75.75 0 010 1.5h-5.25V18a.75.75 0 01-1.5 0v-5.25H6a.75.75 0 010-1.5h5.25V6a.75.75 0 01.75-.75z" clipRule="evenodd" />
                 </svg>
             </li>
-            <li className="flex justify-center items-center relative group">
+            <li className="flex justify-center items-center relative group" onClick={() => dispatch(toggleNewContainer())}>
                 <div className={`p-2 rounded bg-black text-white invisible group-hover:visible absolute top-5 text-sm whitespace-nowrap`}>
                     Create Container
                 </div>

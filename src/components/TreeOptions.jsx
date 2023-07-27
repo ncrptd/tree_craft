@@ -1,10 +1,15 @@
+import { useDispatch } from 'react-redux';
+import { toggleNewContainer } from '../store/slices/TreeSlice';
 function TreeOptions() {
+
+    const dispatch = useDispatch();
+
     return (
         <div className="flex justify-between items-center w-full py-2">
             <span className="uppercase text-sm text-slate-500">dfin</span>
             <ul className="flex gap-4">
-                <li className="flex justify-center items-center cursor-pointer relative group">
-                    <div className={`p-2 rounded bg-black text-white hidden group-hover:block  absolute top-5 text-sm whitespace-nowrap`}>
+                <li className="flex justify-center items-center cursor-pointer relative group" onClick={() => dispatch(toggleNewContainer())}>
+                    <div className={`p-2 rounded bg-black text-white hidden group-hover:block  absolute top-5 text-sm whitespace-nowrap`} >
                         Create Container
                     </div>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 text-red-500">

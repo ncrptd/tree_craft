@@ -1,7 +1,10 @@
 import TreeOptions from "./TreeOptions"
 import TreeNode from "./TreeNode"
-import data from "../data/data"
+import { useSelector } from 'react-redux'
+import AddContainer from "./AddContainer";
 function Tree() {
+    const data = useSelector(state => state.tree.data);
+    const toggleNewContainer = useSelector(state => state.tree.toggleNewContainer)
     return (
         <main >
             <ul className="flex gap-2 items-center mx-5 px-2 ">
@@ -17,6 +20,9 @@ function Tree() {
             <div className="flex border border-slate-300 w-screen">
                 <div className="w-2/5 px-6 bg-slate-50 h-[500px] overflow-auto ">
                     <TreeOptions />
+
+                    {toggleNewContainer && <AddContainer />}
+
                     {data.map((nodeItem) => <TreeNode nodeItem={nodeItem} key={nodeItem?.id} indent={0} />)}
                 </div>
                 <div className="w-full"></div>

@@ -9,7 +9,6 @@ const data = [
         children: [
             {
                 title: 'Content Page',
-
                 id: uuidv4(),
                 type: "leaf",
                 content: "I am leaf of first main container"
@@ -54,14 +53,7 @@ const data = [
                         id: uuidv4(),
                         type: "container",
                         content: "i am grandchild of second main container",
-                        children: [
-                            {
-                                title: 'Videos',
-                                id: uuidv4(),
-                                type: "leaf",
-                                content: "i am grandchild of second main container",
-                            }
-                        ]
+
                     }
                 ]
             }
