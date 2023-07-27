@@ -3,9 +3,9 @@ import TreeNode from "./TreeNode"
 import data from "../data/data"
 function Tree() {
     return (
-        <main>
+        <main >
             <ul className="flex gap-2 items-center mx-5 px-2 ">
-                <li className="border-b-2 p-2">All</li>
+                <li className="border-b-2 p-2 border-red-500">All</li>
                 <li className="p-2">Board</li>
                 <li className="p-2">Graph</li>
                 <li className="p-2">Recent</li>
@@ -14,8 +14,8 @@ function Tree() {
                 </li>
             </ul>
 
-            <div className="flex border border-slate-300">
-                <div className="w-2/5 px-6 bg-slate-50 h-[500px] overflow-auto">
+            <div className="flex border border-slate-300 w-screen">
+                <div className="w-2/5 px-6 bg-slate-50 h-[500px] overflow-auto ">
                     <TreeOptions />
                     {data.map((nodeItem) => <TreeNode nodeItem={nodeItem} key={nodeItem?.id} indent={0} />)}
                 </div>
