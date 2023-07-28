@@ -6,7 +6,7 @@ function Tree() {
     const data = useSelector(state => state.tree.data);
     const showItemInput = useSelector(state => state.tree.showItemInput)
     return (
-        <main >
+        <main className="h-screen">
             <ul className="flex gap-2 items-center mx-5 px-2 ">
                 <li className="border-b-2 p-2 border-red-500">All</li>
                 <li className="p-2">Board</li>
@@ -17,15 +17,15 @@ function Tree() {
                 </li>
             </ul>
 
-            <div className="flex border border-slate-300 w-screen">
-                <div className="w-2/5 px-6 bg-slate-50 h-[500px] overflow-auto ">
+            <div className="flex border h-full">
+                <div className="w-full px-6 bg-slate-50  overflow-auto md:w-2/5">
                     <TreeOptions />
 
                     {showItemInput && <ItemNameInput />}
 
                     {data.map((nodeItem) => <TreeNode nodeItem={nodeItem} key={nodeItem?.id} indent={0} />)}
                 </div>
-                <div className="w-full"></div>
+                <div className="w-full hidden md:block"></div>
             </div>
         </main>
     )

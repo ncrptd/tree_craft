@@ -5,18 +5,18 @@ function Navbar() {
 
     return (
         <header>
-            <div className=" flex mx-5 justify-between items-center px-2 py-4">
-                <div className="flex gap-10">
+            <div className="flex flex-wrap mx-5 md:justify-between justify-center items-center px-2 py-4 gap-2">
+                <div className="flex gap-10 ">
                     <nav className="cursor-pointer">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5" />
                         </svg>
                     </nav>
-                    <div className="flex gap-2 justify-center items-center">
+                    <div className="flex gap-2 justify-center items-center ">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
                         </svg>
-                        <input type="text" placeholder="dfin" />
+                        <input type="text" placeholder="dfin" className="w-full focus:outline px-2 rounded" />
                     </div>
                 </div>
 
@@ -41,7 +41,7 @@ function Navbar() {
                         <span className="leading-4 absolute uppercase text-[10px] bg-red-600 text-white font-bold border-2 border-white rounded-2xl py-0 px-1  top-0 left-6">New</span>
                         <span>FL</span>
 
-                        {open && <div className="cursor-pointer absolute text-slate-500 top-10 right-1 rounded-md shadow-lg w-52 px-2 py-4 text-base flex flex-col gap-4 font-medium">
+                        {open && <div className="cursor-pointer absolute text-slate-500 bg-white top-10 right-1 rounded-md shadow-lg w-52 px-2 py-4 text-base flex flex-col gap-4 font-medium">
                             <ul className="flex flex-col gap-1 border-b-2 p-1 border-slate-200">
                                 <li className="flex justify-between items-center px-2 rounded hover:bg-blue-50"><span>
                                     Dark Mode

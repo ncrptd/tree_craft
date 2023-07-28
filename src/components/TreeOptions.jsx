@@ -1,11 +1,12 @@
 import { useDispatch } from 'react-redux';
-import { toggleItemInput } from '../store/slices/TreeSlice';
+import { handleTargetNodeType, toggleItemInput } from '../store/slices/TreeSlice';
 function TreeOptions() {
 
     const dispatch = useDispatch();
 
     const handleAddNewContainer = () => {
-        dispatch(toggleItemInput())
+        dispatch(toggleItemInput());
+        dispatch(handleTargetNodeType('container'))
     }
     return (
         <div className="flex justify-between items-center w-full py-2">

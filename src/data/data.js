@@ -52,6 +52,7 @@ const data = [
                         id: uuidv4(),
                         type: "container",
                         content: "i am grandchild of second main container",
+                        children: []
                     }
                 ]
             }

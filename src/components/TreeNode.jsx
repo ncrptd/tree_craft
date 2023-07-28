@@ -20,7 +20,7 @@ function TreeNode({ nodeItem, indent }) {
     return (
         <div >
             <div className={`flex justify-between items-center w-full my-2 p-1 rounded ${open && 'bg-slate-200'}`} style={{ marginLeft: `${indent * 20}px` }}>
-                <div className="flex gap-2 items-center cursor-pointer  " onClick={handleNodeOpen}>
+                <div className="flex gap-2 items-center cursor-pointer" onClick={handleNodeOpen}>
                     {type === 'container' && <div>
                         {!open ? <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-2 h-2"><path fill="currentColor" d="m19.704 12l-8.492-8.727a.75.75 0 1 1 1.075-1.046l9 9.25a.75.75 0 0 1 0 1.046l-9 9.25a.75.75 0 1 1-1.075-1.046L19.705 12Z" /></svg> :
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-2 h-2">
@@ -41,7 +41,7 @@ function TreeNode({ nodeItem, indent }) {
                         }
                     </div>
                 </div>
-                {type === 'container' && <TreeNodeOptions nodeItem={nodeItem} />}
+                {type === 'container' && <TreeNodeOptions nodeItem={nodeItem} setOpen={setOpen} />}
             </div>
             {children && children.length > 0 && open && children.map((nodeItem) => <TreeNode nodeItem={nodeItem} key={nodeItem?.id} indent={indent + 1} />)}
 

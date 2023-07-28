@@ -1,20 +1,20 @@
 import { useDispatch } from 'react-redux'
 import { toggleItemInput, handleTargetNode, handleTargetNodeType, deleteNode } from '../store/slices/TreeSlice';
-function TreeNodeOptions({ nodeItem }) {
+function TreeNodeOptions({ nodeItem, setOpen }) {
     const dispatch = useDispatch();
 
     const handleAddNewContainer = () => {
         dispatch(handleTargetNode(nodeItem?.id));
         dispatch(handleTargetNodeType('container'));
-
         dispatch(toggleItemInput());
+        setOpen(true)
     }
 
     const handleAddNewLeaf = () => {
         dispatch(handleTargetNode(nodeItem?.id));
         dispatch(handleTargetNodeType('leaf'));
-        dispatch(toggleItemInput())
-
+        dispatch(toggleItemInput());
+        setOpen(true)
     }
     const handleDelete = () => {
         dispatch(deleteNode(nodeItem?.id));
