@@ -1,20 +1,23 @@
 import { useState } from "react"
 import TreeNodeOptions from './TreeNodeOptions'
 import { useDispatch } from "react-redux";
-import { deleteNode } from "../store/slices/treeSlice";
+import { deleteNode, handleTargetNode, setContent } from "../store/slices/treeSlice";
 function TreeNode({ nodeItem, indent }) {
     const [open, setOpen] = useState(false);
-    const { title, children, type } = nodeItem;
+    const { title, children, type, content, id } = nodeItem;
     const dispatch = useDispatch();
 
 
     const handleNodeOpen = () => {
         if (nodeItem.type === 'container') {
             return setOpen((prev) => !prev);
+        } else {
+            dispatch(handleTargetNode(id));
+            dispatch(setContent(content));
         }
     }
     const handleLeafItemDelete = () => {
-        dispatch(deleteNode(nodeItem.id))
+        dispatch(deleteNode(id))
     }
 
     return (

@@ -1,10 +1,18 @@
 import TreeOptions from "./TreeOptions"
 import TreeNode from "./TreeNode"
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import ItemNameInput from "./ItemNameInput";
+import { useRef } from "react";
+import JoditEditor from 'jodit-react';
+import { setContent } from "../store/slices/treeSlice";
+
 function Tree() {
     const data = useSelector(state => state.tree.data);
-    const showItemInput = useSelector(state => state.tree.showItemInput)
+    const showItemInput = useSelector(state => state.tree.showItemInput);
+    const content = useSelector(state => state.tree.content)
+    const dispatch = useDispatch();
+
+    const editor = useRef(null);
     return (
         <main className="h-screen">
             <ul className="flex gap-2 items-center mx-5 px-2 ">
@@ -25,7 +33,16 @@ function Tree() {
 
                     {data.map((nodeItem) => <TreeNode nodeItem={nodeItem} key={nodeItem?.id} indent={0} />)}
                 </div>
-                <div className="w-full hidden md:block"></div>
+                <div className="w-full ">
+                    <JoditEditor
+                        ref={editor}
+                        value={content}
+                        tabIndex={1} // tabIndex of textarea
+                        onBlur={(newContent) => {
+                            dispatch(setContent(newContent));
+                        }} // preferred to use only this option to update the content for performance reasons
+                    />
+                </div>
             </div>
         </main>
     )

@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
 import data from '../../data/data'
 import { v4 as uuidv4 } from "uuid";
-
+import findNode from '../../services/findNode';
+import findNodeAndParent from '../../services/findNodeAndParent';
 export const treeSlice = createSlice({
     name: 'tree',
     initialState: {
@@ -9,6 +10,7 @@ export const treeSlice = createSlice({
         showItemInput: false,
         targetNodeId: null,
         targetNodeType: null,
+        content: ''
 
     },
     reducers: {
@@ -28,49 +30,50 @@ export const treeSlice = createSlice({
             let newContainer = {};
             newContainer.title = inputValue;
             newContainer.id = uuidv4();
-            newContainer.type = state.targetNodeType === 'leaf' ? 'leaf' : 'container'
+            newContainer.type = state.targetNodeType === 'leaf' ? 'leaf' : 'container';
+            newContainer.content = ' '
             if (state.targetNodeType !== 'leaf') {
                 newContainer.children = [];
             }
 
             if (state.targetNodeId === null) {
-                state.data.push(newContainer);
+                state.data?.push(newContainer);
             } else {
-                const findNode = (id, arr) => {
-                    for (let node of arr) {
-                        if (node.id === id) {
-                            return node;
-                        } else if (node.children && node.children.length > 0) {
-                            const foundNode = findNode(id, node.children);
-                            if (foundNode) {
-                                return foundNode
-                            }
-                        }
-                    }
-                    return null;
-                }
+                // const findNode = (id, arr) => {
+                //     for (let node of arr) {
+                //         if (node.id === id) {
+                //             return node;
+                //         } else if (node.children && node.children.length > 0) {
+                //             const foundNode = findNode(id, node.children);
+                //             if (foundNode) {
+                //                 return foundNode
+                //             }
+                //         }
+                //     }
+                //     return null;
+                // }
                 const targetNode = findNode(state.targetNodeId, state.data);
                 if (targetNode) {
-                    targetNode.children.push(newContainer);
+                    targetNode.children?.push(newContainer);
                 }
             }
             localStorage.setItem('data', JSON.stringify(state.data))
         },
         deleteNode: (state, action) => {
             const targetNodeId = action.payload;
-            const findNodeAndParent = (id, arr) => {
-                for (let node of arr) {
-                    if (node.id === id) {
-                        return { node, parentArr: arr };
-                    } else if (node.children && node.children.length > 0) {
-                        const foundNode = findNodeAndParent(id, node.children);
-                        if (foundNode) {
-                            return foundNode
-                        }
-                    }
-                }
-                return null;
-            }
+            // const findNodeAndParent = (id, arr) => {
+            //     for (let node of arr) {
+            //         if (node.id === id) {
+            //             return { node, parentArr: arr };
+            //         } else if (node.children && node.children.length > 0) {
+            //             const foundNode = findNodeAndParent(id, node.children);
+            //             if (foundNode) {
+            //                 return foundNode
+            //             }
+            //         }
+            //     }
+            //     return null;
+            // }
             const { node, parentArr } = findNodeAndParent(targetNodeId, state.data);
             if (node && parentArr) {
                 const index = parentArr.indexOf(node);
@@ -81,9 +84,31 @@ export const treeSlice = createSlice({
             localStorage.setItem('data', JSON.stringify(state.data))
 
         },
+        setContent: (state, action) => {
+            state.content = action.payload;
+            // const findNode = (id, arr) => {
+            //     for (let node of arr) {
+            //         if (node.id === id) {
+            //             return node;
+            //         } else if (node.children && node.children.length > 0) {
+            //             const foundNode = findNode(id, node.children);
+            //             if (foundNode) {
+            //                 return foundNode
+            //             }
+            //         }
+            //     }
+            //     return null;
+            // }
+            const targetNode = findNode(state.targetNodeId, state.data);
+            if (targetNode) {
+                targetNode.content = state.content;
+            }
+            localStorage.setItem('data', JSON.stringify(state.data))
+
+        }
 
     }
 
 })
-export const { addNode, toggleItemInput, handleTargetNode, handleTargetNodeType, deleteNode } = treeSlice.actions;
+export const { addNode, toggleItemInput, handleTargetNode, handleTargetNodeType, deleteNode, setContent } = treeSlice.actions;
 export default treeSlice.reducer

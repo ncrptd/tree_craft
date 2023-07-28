@@ -2,16 +2,16 @@ import { v4 as uuidv4 } from "uuid";
 
 const data = [
     {
-        title: 'collection.1.1',
+        title: 'Webpage',
         id: uuidv4(),
         type: "container",
-        content: "I am first main container",
+        content: '',
         children: [
             {
                 title: 'Content Page',
                 id: uuidv4(),
                 type: "leaf",
-                content: "I am leaf of first main container"
+                content: "<h1>Content Page</h1>"
             },
             {
                 title: 'collection.1.1.2',
