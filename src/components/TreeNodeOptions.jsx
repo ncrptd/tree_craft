@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux'
-import { toggleItemInput, handleTargetNode, handleTargetNodeType, deleteNode } from '../store/slices/TreeSlice';
+import { toggleItemInput, handleTargetNode, handleTargetNodeType, deleteNode } from '../store/slices/treeSlice';
 function TreeNodeOptions({ nodeItem, setOpen }) {
     const dispatch = useDispatch();
 

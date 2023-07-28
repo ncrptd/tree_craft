@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux'
-import { addNode, toggleItemInput, handleTargetNode } from '../store/slices/TreeSlice';
+import { addNode, toggleItemInput, handleTargetNode } from '../store/slices/treeSlice';
 import { useState } from 'react';
 
 function ItemNameInput() {

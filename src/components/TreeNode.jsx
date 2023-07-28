@@ -1,7 +1,7 @@
 import { useState } from "react"
 import TreeNodeOptions from './TreeNodeOptions'
 import { useDispatch } from "react-redux";
-import { deleteNode } from "../store/slices/TreeSlice";
+import { deleteNode } from "../store/slices/treeSlice";
 function TreeNode({ nodeItem, indent }) {
     const [open, setOpen] = useState(false);
     const { title, children, type } = nodeItem;

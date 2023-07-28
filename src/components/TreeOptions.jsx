@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { handleTargetNodeType, toggleItemInput } from '../store/slices/TreeSlice';
+import { handleTargetNodeType, toggleItemInput } from '../store/slices/treeSlice';
 function TreeOptions() {
 
     const dispatch = useDispatch();
