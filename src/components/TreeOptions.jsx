@@ -10,7 +10,7 @@ function TreeOptions() {
     return (
         <div className="flex justify-between items-center w-full py-2">
             <span className="uppercase text-sm text-slate-500">dfin</span>
-            <ul className="flex gap-4">
+            <ul className="flex  gap-4">
                 <li className="flex justify-center items-center cursor-pointer relative group" onClick={handleAddNewContainer}>
                     <div className={`p-2 rounded bg-black text-white hidden group-hover:block  absolute top-5 text-sm whitespace-nowrap`} >
                         Create Container

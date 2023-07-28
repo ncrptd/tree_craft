@@ -1,19 +1,27 @@
 import { useDispatch } from 'react-redux'
-import { toggleItemInput, handleTargetNode, deleteContainer } from '../store/slices/TreeSlice';
+import { toggleItemInput, handleTargetNode, handleTargetNodeType, deleteNode } from '../store/slices/TreeSlice';
 function TreeNodeOptions({ nodeItem }) {
     const dispatch = useDispatch();
 
     const handleAddNewContainer = () => {
         dispatch(handleTargetNode(nodeItem?.id));
+        dispatch(handleTargetNodeType('container'));
+
         dispatch(toggleItemInput());
     }
 
+    const handleAddNewLeaf = () => {
+        dispatch(handleTargetNode(nodeItem?.id));
+        dispatch(handleTargetNodeType('leaf'));
+        dispatch(toggleItemInput())
+
+    }
     const handleDelete = () => {
-        dispatch(deleteContainer(nodeItem?.id));
+        dispatch(deleteNode(nodeItem?.id));
     }
     return (
         <ul className="flex gap-4 cursor-pointer ">
-            <li className="flex justify-center items-center group relative">
+            <li className="flex justify-center items-center group relative" onClick={handleAddNewLeaf}>
                 <div className={`p-2 rounded bg-black text-white hidden group-hover:block  absolute top-5 text-sm whitespace-nowrap`}>
                     Create Item
                 </div>
