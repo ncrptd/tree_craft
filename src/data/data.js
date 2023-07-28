@@ -31,7 +31,6 @@ const data = [
     },
     {
         title: 'collection.1.2',
-
         id: uuidv4(),
         type: "container",
         content: "I am Second main container",
@@ -53,7 +52,6 @@ const data = [
                         id: uuidv4(),
                         type: "container",
                         content: "i am grandchild of second main container",
-
                     }
                 ]
             }

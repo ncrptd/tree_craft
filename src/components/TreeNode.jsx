@@ -2,7 +2,7 @@ import { useState } from "react"
 import TreeNodeOptions from './TreeNodeOptions'
 function TreeNode({ nodeItem, indent }) {
     const [open, setOpen] = useState(false);
-    const { title, id, children, type } = nodeItem;
+    const { title, children, type } = nodeItem;
 
     return (
         <div>
@@ -16,9 +16,9 @@ function TreeNode({ nodeItem, indent }) {
 
                         }
                     </div>}
-                    <span className={`${type !== 'container' && 'ml-4 font-medium text-slate-500'} font-semibold`}>{title}</span>
+                    <span className={`${type !== 'container' && 'ml-4 font-medium text-slate-500 '} w-48 overflow-hidden text-ellipsis font-semibold`} >{title}</span>
                 </div>
-                {type === 'container' && <TreeNodeOptions id={id} />}
+                {type === 'container' && <TreeNodeOptions nodeItem={nodeItem} />}
             </div>
             {children && children.length > 0 && open && children.map((nodeItem) => <TreeNode nodeItem={nodeItem} key={nodeItem?.id} indent={indent + 1} />)}
 
