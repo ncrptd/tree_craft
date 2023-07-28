@@ -9,7 +9,7 @@ import { setContent } from "../store/slices/treeSlice";
 function Tree() {
     const data = useSelector(state => state.tree.data);
     const showItemInput = useSelector(state => state.tree.showItemInput);
-    const content = useSelector(state => state.tree.content)
+    const content = useSelector(state => state.tree.content);
     const dispatch = useDispatch();
 
     const editor = useRef(null);
@@ -37,10 +37,10 @@ function Tree() {
                     <JoditEditor
                         ref={editor}
                         value={content}
-                        tabIndex={1} // tabIndex of textarea
+                        tabIndex={1}
                         onBlur={(newContent) => {
                             dispatch(setContent(newContent));
-                        }} // preferred to use only this option to update the content for performance reasons
+                        }}
                     />
                 </div>
             </div>

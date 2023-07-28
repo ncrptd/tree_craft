@@ -10,7 +10,7 @@ function TreeNode({ nodeItem, indent }) {
 
     const handleNodeOpen = () => {
         if (nodeItem.type === 'container') {
-            return setOpen((prev) => !prev);
+            setOpen((prev) => !prev);
         } else {
             dispatch(handleTargetNode(id));
             dispatch(setContent(content));
