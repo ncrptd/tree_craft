@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux'
-import { toggleItemInput, handleTargetNode, handleTargetNodeType, deleteNode } from '../store/slices/treeSlice';
+import { toggleItemInput, handleTargetNode, handleTargetNodeType, deleteNode, setContent } from '../store/slices/treeSlice';
 function TreeNodeOptions({ nodeItem, setOpen }) {
     const dispatch = useDispatch();
 
@@ -18,6 +18,8 @@ function TreeNodeOptions({ nodeItem, setOpen }) {
     }
     const handleDelete = () => {
         dispatch(deleteNode(nodeItem?.id));
+        dispatch(setContent(' '));
+
     }
     return (
         <ul className="flex gap-4 cursor-pointer ">
