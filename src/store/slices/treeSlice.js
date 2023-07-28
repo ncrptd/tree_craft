@@ -16,7 +16,6 @@ export const treeSlice = createSlice({
             state.showItemInput = !state.showItemInput;
         },
         handleTargetNode: (state, action) => {
-            console.log(action.payload)
             state.targetNodeId = action.payload
         },
         handleTargetNodeType: (state, action) => {
