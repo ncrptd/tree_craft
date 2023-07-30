@@ -41,7 +41,7 @@ function Navbar() {
                         <span className="leading-4 absolute uppercase text-[10px] bg-red-600 text-white font-bold border-2 border-white rounded-2xl py-0 px-1  top-0 left-6">New</span>
                         <span>FL</span>
 
-                        {open && <div className="cursor-pointer absolute text-slate-500 bg-white top-10 right-1 rounded-md shadow-lg w-52 px-2 py-4 text-base flex flex-col gap-4 font-medium">
+                        {open && <div className="cursor-pointer absolute text-slate-500 bg-white z-10 top-10 right-1 rounded-md shadow-lg w-52 px-2 py-4 text-base flex flex-col gap-4 font-medium">
                             <ul className="flex flex-col gap-1 border-b-2 p-1 border-slate-200">
                                 <li className="flex justify-between items-center px-2 rounded hover:bg-blue-50"><span>
                                     Dark Mode
